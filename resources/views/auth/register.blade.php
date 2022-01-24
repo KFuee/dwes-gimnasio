@@ -79,7 +79,7 @@
                             <label for="weight" class="col-md-4 col-form-label text-md-end">{{ __('Peso') }}</label>
 
                             <div class="col-md-6">
-                                <input id="weight" type="number" class="form-control @error('weight') is-invalid @enderror" name="weight" required autocomplete="weight">
+                                <input id="weight" type="number" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}" required autocomplete="weight">
 
                                 @error('weight')
                                 <span class="invalid-feedback" role="alert">
@@ -93,7 +93,7 @@
                             <label for="height" class="col-md-4 col-form-label text-md-end">{{ __('Altura') }}</label>
 
                             <div class="col-md-6">
-                                <input id="height" type="number" class="form-control @error('height') is-invalid @enderror" name="height" required autocomplete="height">
+                                <input id="height" type="number" class="form-control @error('height') is-invalid @enderror" name="height" value="{{ old('height') }}" required autocomplete="height">
 
                                 @error('height')
                                 <span class="invalid-feedback" role="alert">
@@ -107,7 +107,7 @@
                             <label for="birthdate" class="col-md-4 col-form-label text-md-end">{{ __('Fecha de nacimiento') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthdate" type="date" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" required autocomplete="birthdate">
+                                <input id="birthdate" type="date" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate">
 
                                 @error('birthdate')
                                 <span class="invalid-feedback" role="alert">
@@ -123,9 +123,9 @@
                             <div class="col-md-6">
                                 <!-- Selector de género -->
                                 <select id="gender" class="form-select @error('gender') is-invalid @enderror" name="gender" required autocomplete="gender">
-                                    <option selected>Selecciona una opción</option>
-                                    <option value="male">Masculino</option>
-                                    <option value="female">Femenino</option>
+                                    <option value="" selected>Selecciona una opción</option>
+                                    <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Masculino</option>
+                                    <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Femenino</option>
                                 </select>
 
                                 @error('gender')
