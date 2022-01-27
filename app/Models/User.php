@@ -46,4 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Devuelve el rol al que pertenece un usuario
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
