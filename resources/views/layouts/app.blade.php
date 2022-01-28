@@ -35,7 +35,37 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @guest
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('home') }}">Inicio</a>
+                        </li>
+                        @endguest
 
+                        @auth
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('home') }}">Inicio</a>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('users') }}">Usuarios</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="activitiesDropdown" class="nav-link dropdown-toggle" href="{{ route('activities') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Actividades
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="activitiesDropdown">
+                                <a class="dropdown-item" href="{{ route('activities') }}">
+                                    {{ __('Crear') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('activities') }}">
+                                    {{ __('Listado') }}
+                                </a>
+                            </div>
+                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -62,7 +92,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Cerrar sesión') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
