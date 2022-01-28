@@ -8,6 +8,7 @@
         <div class="card-header">{{ __('Listado de usuarios') }}</div>
 
         <div class="card-body">
+          @if ($users->isNotEmpty())
           <div class="table-responsive">
             <table class="table">
               <thead>
@@ -26,8 +27,8 @@
               </thead>
 
               <tbody>
+                @foreach($users as $user)
                 <tr>
-                  @foreach($users as $user)
                   <th scope="row">{{ $user->id }}</th>
                   <td>{{ $user->role->name }}</td>
                   <td>{{ $user->dni }}</td>
@@ -37,11 +38,14 @@
                   <td>{{ $user->height }}</td>
                   <td>{{ $user->birthdate }}</td>
                   <td>{{ $user->gender }}</td>
-                  @endforeach
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
+          @else
+          No se han encontrado usuarios.
+          @endif
         </div>
       </div>
     </div>
