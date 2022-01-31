@@ -4,8 +4,14 @@
 // Variables
 @import "variables";
 
+// Variables Darkly
+@import "./darkly/variables";
+
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+
+// Bootswatch Darkly
+@import "./darkly/bootswatch";
 
 // Font Awesome
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";

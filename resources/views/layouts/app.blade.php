@@ -21,9 +21,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: #222;">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -51,16 +51,16 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a id="activitiesDropdown" class="nav-link dropdown-toggle" href="{{ route('activities') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="activitiesDropdown" class="nav-link dropdown-toggle" href="{{ route('activities.list') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Actividades
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="activitiesDropdown">
-                                <a class="dropdown-item" href="{{ route('activities') }}">
+                                <a class="dropdown-item" href="{{ route('activities.create') }}">
                                     {{ __('Crear') }}
                                 </a>
 
-                                <a class="dropdown-item" href="{{ route('activities') }}">
+                                <a class="dropdown-item" href="{{ route('activities.list') }}">
                                     {{ __('Listado') }}
                                 </a>
                             </div>
@@ -80,7 +80,7 @@
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registro') }}</a>
                         </li>
                         @endif
                         @else
