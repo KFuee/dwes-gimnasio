@@ -18,13 +18,23 @@ use App\Http\Controllers\ActivityController;
 |
 */
 
+// Rutas generales
 Route::get('/', [HomeController::class, 'index'])
   ->name('home');
 
+// Rutas de autenticación
 Auth::routes(['verify' => true]);
 
+// Rutas de usuarios
 Route::get('/users', [UserController::class, 'index'])
   ->name('users');
 
-Route::get('/activities', [ActivityController::class, 'index'])
-  ->name('activities');
+// Rutas de actividades
+Route::name('activities.')->prefix('activities')->group(function () {
+  Route::get('/', [ActivityController::class, 'index'])
+    ->name('list');
+  Route::get('/create', [ActivityController::class, 'create'])
+    ->name('create');
+  Route::post('/store', [ActivityController::class, 'store'])
+    ->name('store');
+});

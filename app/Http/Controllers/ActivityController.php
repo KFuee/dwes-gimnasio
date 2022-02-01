@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ActivityController extends Controller
 {
@@ -25,7 +26,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        //
+        return view('activities.create');
     }
 
     /**
@@ -36,7 +37,14 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Activity::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'duration' => $request->duration,
+            'max_participants' => $request->max_participants,
+        ]);
+
+        return Redirect::route('activities.list');
     }
 
     /**
