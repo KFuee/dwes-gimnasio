@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-10">
-      <div class="card">
+      <div class="card border-primary mb-3">
         <div class="card-header">{{ __('Listado de actividades') }}</div>
 
         <div class="card-body">
@@ -12,7 +12,7 @@
           <div class="table-responsive">
             <table class="table">
               <thead>
-                <tr>
+                <tr class="table-primary">
                   <th scope="col">#</th>
                   <th scope="col">Nombre</th>
                   <th scope="col">Descripción</th>
@@ -24,7 +24,7 @@
 
               <tbody>
                 @foreach($activities as $activity)
-                <tr>
+                <tr class="table-secondary">
                   <th scope="row">{{ $activity->id }}</th>
                   <td>{{ $activity->name }}</td>
                   <td>{{ $activity->description }}</td>

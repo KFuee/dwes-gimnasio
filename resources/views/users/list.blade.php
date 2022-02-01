@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-10">
-      <div class="card">
+      <div class="card border-primary mb-3">
         <div class="card-header">{{ __('Listado de usuarios') }}</div>
 
         <div class="card-body">
@@ -12,7 +12,7 @@
           <div class="table-responsive">
             <table class="table">
               <thead>
-                <tr>
+                <tr class="table-primary">
                   <th scope="col">#</th>
                   <th scope="col">Rol</th>
                   <th scope="col">DNI</th>
@@ -28,7 +28,7 @@
 
               <tbody>
                 @foreach($users as $user)
-                <tr>
+                <tr class="table-secondary">
                   <th scope="row">{{ $user->id }}</th>
                   <td>{{ $user->role->name }}</td>
                   <td>{{ $user->dni }}</td>
