@@ -53,6 +53,9 @@ class ActivityController extends Controller
             'duration' => $request->duration,
             'max_participants' => $request->max_participants,
         ]);
+
+        return Redirect::route('activities.list')
+            ->with('success', 'Actividad creada correctamente');
     }
 
     /**
