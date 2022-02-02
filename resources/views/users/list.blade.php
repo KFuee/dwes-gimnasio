@@ -42,6 +42,9 @@
                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary btn-sm">
                       <i class="fas fa-eye"></i>
                     </a>
+                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">
+                      <i class="fas fa-edit"></i>
+                    </a>
                   </td>
                 </tr>
                 @endforeach

@@ -32,7 +32,7 @@ class ActivityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View vista de edición
+     * @return \Illuminate\Contracts\View\View vista de creación
      */
     public function create()
     {
@@ -61,7 +61,7 @@ class ActivityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Activity  $activity
+     * @param \App\Models\Activity $activity
      * @return \Illuminate\Contracts\View\View vista de mostrar
      */
     public function show(Activity $activity)
