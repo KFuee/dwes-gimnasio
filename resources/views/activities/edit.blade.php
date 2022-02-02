@@ -9,9 +9,8 @@
 
         <div class="card-body">
           <form method="POST" action="{{ route('activities.update', ['activity' => $activity]) }}">
-            @method('PATCH')
-
             @csrf
+            @method('PATCH')
 
             <div class="row mb-3">
               <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
