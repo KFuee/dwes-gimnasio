@@ -21,7 +21,7 @@ class ActivityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View vista de listado
      */
     public function index()
     {
@@ -32,7 +32,7 @@ class ActivityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View vista de edición
      */
     public function create()
     {
@@ -42,8 +42,8 @@ class ActivityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse activities.index
      */
     public function store(Request $request)
     {
@@ -54,52 +54,63 @@ class ActivityController extends Controller
             'max_participants' => $request->max_participants,
         ]);
 
-        return Redirect::route('activities.list')
+        return Redirect::route('activities.index')
             ->with('success', 'Actividad creada correctamente');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Activity  $activity
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Activity  $activity
+     * @return \Illuminate\Contracts\View\View vista de mostrar
      */
     public function show(Activity $activity)
     {
-        //
+        return view('activities.show', ['activity' => $activity]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Activity  $activity
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Activity  $activity
+     * @return \Illuminate\Contracts\View\View vista de edición
      */
     public function edit(Activity $activity)
     {
-        //
+        return view('activities.edit', ['activity' => $activity]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Activity  $activity
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Activity  $activity
+     * @return \Illuminate\Http\RedirectResponse activities.index
      */
     public function update(Request $request, Activity $activity)
     {
-        //
+        $activity->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'duration' => $request->duration,
+            'max_participants' => $request->max_participants,
+        ]);
+
+        return Redirect::route('activities.index')
+            ->with('success', 'Actividad #' . $activity->id . ' actualizada correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Activity  $activity
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Activity  $activity
+     * @return \Illuminate\Http\RedirectResponse activities.index
      */
     public function destroy(Activity $activity)
     {
-        //
+        $activity->delete();
+
+        return Redirect::route('activities.index')
+            ->with('success', 'Actividad #' . $activity->id . ' eliminada correctamente');
     }
 }

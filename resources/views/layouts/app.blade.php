@@ -47,7 +47,7 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a id="activitiesDropdown" class="nav-link dropdown-toggle" href="{{ route('activities.list') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="activitiesDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Actividades
                             </a>
 
@@ -56,7 +56,7 @@
                                     {{ __('Crear') }}
                                 </a>
 
-                                <a class="dropdown-item" href="{{ route('activities.list') }}">
+                                <a class="dropdown-item" href="{{ route('activities.index') }}">
                                     {{ __('Listado') }}
                                 </a>
                             </div>

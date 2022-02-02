@@ -30,11 +30,4 @@ Route::get('/users', [UserController::class, 'index'])
   ->name('users');
 
 // Rutas de actividades
-Route::name('activities.')->prefix('activities')->group(function () {
-  Route::get('/', [ActivityController::class, 'index'])
-    ->name('list');
-  Route::get('/create', [ActivityController::class, 'create'])
-    ->name('create');
-  Route::post('/store', [ActivityController::class, 'store'])
-    ->name('store');
-});
+Route::resource('activities', ActivityController::class);
