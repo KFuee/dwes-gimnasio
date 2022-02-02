@@ -30,6 +30,16 @@ class UserController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Contracts\View\View vista de creación
+     */
+    public function create()
+    {
+        return view('auth.register');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param \App\Models\User $user

@@ -5,7 +5,12 @@
   <div class="row justify-content-center">
     <div class="col-md-10">
       <div class="card border-primary mb-3">
-        <div class="card-header">{{ __('Listado de sesiones') }}</div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+          {{ __('Listado de sesiones') }}
+          <a href="{{ route('sessions.create') }}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i>
+          </a>
+        </div>
 
         <div class="card-body">
           @if ($sessions->isNotEmpty())
