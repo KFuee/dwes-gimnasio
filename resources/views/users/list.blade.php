@@ -67,6 +67,12 @@
           No se han encontrado usuarios.
           @endif
         </div>
+
+        @if ($users->isNotEmpty())
+        <div class="card-footer text-muted">
+          Número de registros encontrados: {{ $users->count() }}
+        </div>
+        @endif
       </div>
     </div>
   </div>

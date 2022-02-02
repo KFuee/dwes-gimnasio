@@ -58,6 +58,12 @@
           No se han encontrado sesiones.
           @endif
         </div>
+
+        @if ($sessions->isNotEmpty())
+        <div class="card-footer text-muted">
+          Número de registros encontrados: {{ $sessions->count() }}
+        </div>
+        @endif
       </div>
     </div>
   </div>
