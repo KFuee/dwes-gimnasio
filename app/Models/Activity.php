@@ -20,4 +20,9 @@ class Activity extends Model
         'duration',
         'max_participants',
     ];
+
+    public function sessions()
+    {
+        return $this->hasMany(Session::class);
+    }
 }
