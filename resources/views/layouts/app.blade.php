@@ -46,20 +46,12 @@
                             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a id="activitiesDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Actividades
-                            </a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('activities.index') }}">Actividades</a>
+                        </li>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="activitiesDropdown">
-                                <a class="dropdown-item" href="{{ route('activities.create') }}">
-                                    {{ __('Crear') }}
-                                </a>
-
-                                <a class="dropdown-item" href="{{ route('activities.index') }}">
-                                    {{ __('Listado') }}
-                                </a>
-                            </div>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('sessions.index') }}">Sesiones</a>
                         </li>
                         @endauth
                     </ul>
