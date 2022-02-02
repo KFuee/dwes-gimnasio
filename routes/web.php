@@ -26,8 +26,7 @@ Route::get('/', [HomeController::class, 'index'])
 Auth::routes(['verify' => true]);
 
 // Rutas de usuarios
-Route::get('/users', [UserController::class, 'index'])
-  ->name('users');
+Route::resource('users', UserController::class);
 
 // Rutas de actividades
 Route::resource('activities', ActivityController::class);

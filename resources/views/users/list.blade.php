@@ -38,6 +38,11 @@
                   <td>{{ $user->height }}</td>
                   <td>{{ $user->birthdate }}</td>
                   <td>{{ $user->gender }}</td>
+                  <td>
+                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary btn-sm">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                  </td>
                 </tr>
                 @endforeach
               </tbody>
