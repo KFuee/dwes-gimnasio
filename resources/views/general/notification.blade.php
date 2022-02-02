@@ -3,7 +3,7 @@
   <div class="toast-header">
     @if ($notification = Session::get('success'))
     <strong class="me-auto text-success">Gimnasio</strong>
-    @elseif ($notification = Session::get('error') || $errors->any())
+    @elseif ($notification = Session::get('error') or $errors->any())
     <strong class="me-auto text-danger">Gimnasio</strong>
     @elseif ($notification = Session::get('warning'))
     <strong class="me-auto text-warning">Gimnasio</strong>
@@ -16,7 +16,7 @@
   </div>
   <div class="toast-body">
     @if ($errors->any())
-    Por favor revise el formulario y corrija los errores.
+    Por favor revisa el formulario y corrije los errores.
     @else
     {{ $notification }}.
     @endif
