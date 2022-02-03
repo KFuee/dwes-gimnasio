@@ -8,7 +8,6 @@
         <th scope="col">{{ __('Actividad') }}</th>
         @endif
         <th scope="col">{{ __('Fecha') }}</th>
-        <th scope="col">{{ __('Día de la semana') }}</th>
         <th scope="col">{{ __('Hora de inicio') }}</th>
         <th scope="col">{{ __('Hora de fin') }}</th>
         <th scope="col">{{ __('Acciones') }}</th>
@@ -22,8 +21,9 @@
         @if ($sessionsView)
         <td>{{ $session->activity->name }}</td>
         @endif
-        <td>{{ Carbon\Carbon::parse($session->date)->format('d-m-Y') }}</td>
-        <td>{{ Carbon\Carbon::parse($session->date)->format('l') }}</td>
+        <td>{{ Carbon\Carbon::parse($session->date)->translatedFormat('l') }},
+          {{ Carbon\Carbon::parse($session->date)->format('d-m-Y') }}
+        </td>
         <td>{{ Carbon\Carbon::parse($session->start_time)->format('H:i') }}</td>
         <td>{{ Carbon\Carbon::parse($session->end_time)->format('H:i') }}</td>
         <td>
