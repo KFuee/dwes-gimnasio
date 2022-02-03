@@ -14,9 +14,20 @@
             <li class="list-group-item">Duración en minutos: {{ $activity->duration }}</li>
             <li class="list-group-item">Número máximo de participantes: {{ $activity->max_participants }}</li>
         </div>
+
+        <!-- Muestra las sesiones de la actividad en una tabla -->
+        <div class="card-header">Sesiones de la actividad</div>
+        <div class="card-body">
+          @include('sessions.table')
+        </div>
+
+        @if ($sessions->isNotEmpty())
+        <div class="card-footer text-muted">
+          Número de registros encontrados: {{ $sessions->count() }}
+        </div>
+        @endif
       </div>
     </div>
   </div>
-</div>
 </div>
 @endsection
