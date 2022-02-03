@@ -29,7 +29,7 @@
                 @foreach ($sessions as $session)
                 <tr>
                   <td>{{ $session->activity->name }}</td>
-                  <td>{{ $session->date }}</td>
+                  <td>{{ Carbon\Carbon::parse($session->date)->format('d-m-Y') }}</td>
                   <td>{{ $session->start_time }}</td>
                   <td>{{ $session->end_time }}</td>
                   <td>
