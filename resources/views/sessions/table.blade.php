@@ -3,6 +3,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        <th>#</th>
         @if ($sessionsView)
         <th scope="col">{{ __('Actividad') }}</th>
         @endif
@@ -12,9 +13,11 @@
         <th scope="col">{{ __('Acciones') }}</th>
       </tr>
     </thead>
+
     <tbody>
       @foreach ($sessions as $session)
       <tr>
+        <td>{{ $session->id }}</td>
         @if ($sessionsView)
         <td>{{ $session->activity->name }}</td>
         @endif
