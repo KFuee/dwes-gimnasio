@@ -21,7 +21,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\View vista de listado
+     * @return \Illuminate\Contracts\Support\Renderable vista de listado
      */
     public function index()
     {
@@ -32,7 +32,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View vista de creación
+     * @return \Illuminate\Contracts\Support\Renderable vista de creación
      */
     public function create()
     {
@@ -43,7 +43,7 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param \App\Models\User $user
-     * @return \Illuminate\Contracts\View\View vista de mostrar
+     * @return \Illuminate\Contracts\Support\Renderable vista de mostrar
      */
     public function show(User $user)
     {
@@ -54,7 +54,7 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param \App\Models\User $user
-     * @return \Illuminate\Contracts\View\View vista de edición
+     * @return \Illuminate\Contracts\Support\Renderable vista de edición
      */
     public function edit(User $user)
     {
@@ -66,7 +66,7 @@ class UserController extends Controller
      *
      * @param \Illuminate\Http\Request  $request
      * @param \App\Models\User $user
-     * @return \Illuminate\Http\RedirectResponse activities.index
+     * @return \Illuminate\Http\RedirectResponse users.index
      */
     public function update(Request $request, User $user)
     {
@@ -86,8 +86,8 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse users.index
      */
     public function destroy(User $user)
     {

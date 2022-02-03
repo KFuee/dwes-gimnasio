@@ -21,7 +21,7 @@ class ActivityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\View vista de listado
+     * @return \Illuminate\Contracts\Support\Renderable vista de listado
      */
     public function index()
     {
@@ -32,7 +32,7 @@ class ActivityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View vista de creación
+     * @return \Illuminate\Contracts\Support\Renderable vista de creación
      */
     public function create()
     {
@@ -62,7 +62,7 @@ class ActivityController extends Controller
      * Display the specified resource.
      *
      * @param \App\Models\Activity $activity
-     * @return \Illuminate\Contracts\View\View vista de mostrar
+     * @return \Illuminate\Contracts\Support\Renderable vista de mostrar
      */
     public function show(Activity $activity)
     {
@@ -74,7 +74,7 @@ class ActivityController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param \App\Models\Activity $activity
-     * @return \Illuminate\Contracts\View\View vista de edición
+     * @return \Illuminate\Contracts\Support\Renderable vista de edición
      */
     public function edit(Activity $activity)
     {

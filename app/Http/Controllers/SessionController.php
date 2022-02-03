@@ -23,7 +23,7 @@ class SessionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\View vista de listado
+     * @return \Illuminate\Contracts\Support\Renderable vista de listado
      */
     public function index()
     {
@@ -34,7 +34,8 @@ class SessionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View vista de creación
+     * @return \Illuminate\Http\RedirectResponse activities.index
+     * @return \Illuminate\Contracts\Support\Renderable vista de creación
      */
     public function create()
     {
@@ -105,7 +106,7 @@ class SessionController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Session $session
-     * @return \Illuminate\Contracts\View\View vista de mostrar
+     * @return \Illuminate\Contracts\Support\Renderable vista de mostrar
      */
     public function show(Session $session)
     {
@@ -116,7 +117,7 @@ class SessionController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Session  $session
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse sessions.index
      */
     public function destroy(Session $session)
     {
