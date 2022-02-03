@@ -15,7 +15,7 @@
         <div class="card-body">
           @if ($users->isNotEmpty())
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-bordered table-hover">
               <thead>
                 <tr class="table-primary">
                   <th scope="col">#</th>
