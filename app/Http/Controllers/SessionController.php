@@ -143,6 +143,9 @@ class SessionController extends Controller
      */
     public function destroy(Session $session)
     {
-        //
+        $session->delete();
+
+        return Redirect::route('sessions.index')
+            ->with('success', 'Sesión #' . $session->id . ' eliminada correctamente');
     }
 }
