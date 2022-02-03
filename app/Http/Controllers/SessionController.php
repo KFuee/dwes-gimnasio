@@ -34,7 +34,7 @@ class SessionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View vista de creación
      */
     public function create()
     {
@@ -110,29 +110,6 @@ class SessionController extends Controller
     public function show(Session $session)
     {
         return view('sessions.show', ['session' => $session]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Session  $session
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Session $session)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Session  $session
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Session $session)
-    {
-        //
     }
 
     /**

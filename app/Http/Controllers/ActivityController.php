@@ -73,7 +73,7 @@ class ActivityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Activity  $activity
+     * @param \App\Models\Activity $activity
      * @return \Illuminate\Contracts\View\View vista de edición
      */
     public function edit(Activity $activity)
@@ -85,7 +85,7 @@ class ActivityController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Activity  $activity
+     * @param \App\Models\Activity $activity
      * @return \Illuminate\Http\RedirectResponse activities.index
      */
     public function update(Request $request, Activity $activity)
