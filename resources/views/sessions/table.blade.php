@@ -3,7 +3,9 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        @if ($sessionsView)
         <th scope="col">{{ __('Actividad') }}</th>
+        @endif
         <th scope="col">{{ __('Fecha') }}</th>
         <th scope="col">{{ __('Hora de inicio') }}</th>
         <th scope="col">{{ __('Hora de fin') }}</th>
@@ -13,7 +15,9 @@
     <tbody>
       @foreach ($sessions as $session)
       <tr>
+        @if ($sessionsView)
         <td>{{ $session->activity->name }}</td>
+        @endif
         <td>{{ Carbon\Carbon::parse($session->date)->format('d-m-Y') }}</td>
         <td>{{ $session->start_time }}</td>
         <td>{{ $session->end_time }}</td>

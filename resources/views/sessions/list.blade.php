@@ -13,7 +13,7 @@
         </div>
 
         <div class="card-body">
-          @include('sessions.table')
+          @include('sessions.table', ['sessionsView' => true])
         </div>
 
         @if ($sessions->isNotEmpty())
