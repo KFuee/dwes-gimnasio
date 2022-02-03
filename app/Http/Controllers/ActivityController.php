@@ -111,6 +111,6 @@ class ActivityController extends Controller
         $activity->delete();
 
         return Redirect::route('activities.index')
-            ->with('success', 'Actividad #' . $activity->id . ' eliminada correctamente');
+            ->with('success', 'Actividad #' . $activity->id . ' y sus sesiones se han eliminado correctamente');
     }
 }

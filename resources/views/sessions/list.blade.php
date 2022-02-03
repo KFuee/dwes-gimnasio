@@ -22,7 +22,6 @@
                   <th scope="col">{{ __('Fecha') }}</th>
                   <th scope="col">{{ __('Hora de inicio') }}</th>
                   <th scope="col">{{ __('Hora de fin') }}</th>
-                  <th scope="col">{{ __('Participantes') }}</th>
                   <th scope="col">{{ __('Acciones') }}</th>
                 </tr>
               </thead>
@@ -33,7 +32,6 @@
                   <td>{{ $session->date }}</td>
                   <td>{{ $session->start_time }}</td>
                   <td>{{ $session->end_time }}</td>
-                  <td>{{ $session->participants->count() }}</td>
                   <td>
                     <a href="{{ route('sessions.show', $session) }}" class="btn btn-primary btn-sm">
                       <i class="fas fa-eye"></i>
