@@ -2,7 +2,7 @@
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>
-      <tr>
+      <tr class="table-primary">
         <th>#</th>
         @if ($sessionsView)
         <th scope="col">{{ __('Actividad') }}</th>
@@ -16,20 +16,17 @@
 
     <tbody>
       @foreach ($sessions as $session)
-      <tr>
+      <tr class="table-secondary">
         <td>{{ $session->id }}</td>
         @if ($sessionsView)
         <td>{{ $session->activity->name }}</td>
         @endif
         <td>{{ Carbon\Carbon::parse($session->date)->format('d-m-Y') }}</td>
-        <td>{{ $session->start_time }}</td>
-        <td>{{ $session->end_time }}</td>
+        <td>{{ Carbon\Carbon::parse($session->start_time)->format('H:i') }}</td>
+        <td>{{ Carbon\Carbon::parse($session->end_time)->format('H:i') }}</td>
         <td>
           <a href="{{ route('sessions.show', $session) }}" class="btn btn-primary btn-sm">
             <i class="fas fa-eye"></i>
-          </a>
-          <a href="{{ route('sessions.edit', $session) }}" class="btn btn-warning btn-sm">
-            <i class="fas fa-edit"></i>
           </a>
           <form action="{{ route('sessions.destroy', $session) }}" method="POST" class="d-inline">
             @csrf
