@@ -51,8 +51,8 @@ class SessionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse sessions.index
      */
     public function store(Request $request)
     {
@@ -104,12 +104,12 @@ class SessionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Session  $session
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Session $session
+     * @return \Illuminate\Contracts\View\View vista de mostrar
      */
     public function show(Session $session)
     {
-        //
+        return view('sessions.show', ['session' => $session]);
     }
 
     /**
