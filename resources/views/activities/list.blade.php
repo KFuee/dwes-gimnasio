@@ -14,13 +14,13 @@
 
         <div class="card-body">
           @if ($activities->isNotEmpty())
+          <p>Para visualizar la descripción entra en la información de una actividad específica.</p>
           <div class="table-responsive">
             <table class="table table-bordered table-hover">
               <thead>
                 <tr class="table-primary">
                   <th scope="col">#</th>
                   <th scope="col">Nombre</th>
-                  <th scope="col">Descripción</th>
                   <th scope="col">Duración</th>
                   <th scope="col">Máximo participantes</th>
                   <th scope="col">Acciones</th>
@@ -32,7 +32,6 @@
                 <tr class="table-secondary">
                   <th scope="row">{{ $activity->id }}</th>
                   <td>{{ $activity->name }}</td>
-                  <td>{{ $activity->description }}</td>
                   <td>{{ $activity->duration }}</td>
                   <td>{{ $activity->max_participants }}</td>
                   <td>
