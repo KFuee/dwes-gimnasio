@@ -52,4 +52,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Role::class);
     }
+
+    // Comprueba si un usuario es administrador
+    public function isAdministrator()
+    {
+        return $this->role->name == 'Administrator';
+    }
 }

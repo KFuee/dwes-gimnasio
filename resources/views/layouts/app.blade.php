@@ -42,6 +42,16 @@
                             <a class="nav-link" href="{{ route('home') }}">Inicio</a>
                         </li>
 
+                        @if (!Auth::user()->isAdministrator())
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('appointments.create') }}">Reservar</a>
+                        </li>
+                        @else
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('appointments.index') }}">Reservas</a>
+                        </li>
+                        @endif
+
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
                         </li>
@@ -78,8 +88,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar sesión') }}
                                 </a>
 

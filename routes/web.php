@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,6 @@ Route::resource('activities', ActivityController::class);
 
 // Rutas de sesiones
 Route::resource('sessions', SessionController::class);
+
+// Rutas de reservas
+Route::resource('appointments', AppointmentController::class);
