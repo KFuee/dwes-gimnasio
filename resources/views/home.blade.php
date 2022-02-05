@@ -16,8 +16,8 @@
 
                         <div class="row">
                             @foreach($activities as $activity)
-                            @if ($activity->sessions->isNotEmpty())
-                            <div class="col-md-4">
+                            @if ($activity->isAvailable())
+                            <div class="col-lg-4 d-flex align-items-stretch">
                                 <div class="card border-primary mb-3">
                                     <div class="card-header">{{ $activity->name }}</div>
                                     <div class="card-body">
@@ -27,6 +27,19 @@
                                     </div>
                                     <div class="card-footer text-muted">
                                         {{ $activity->max_participants * $activity->sessions->count() }} plazas disponibles
+                                    </div>
+                                </div>
+                            </div>
+                            @else
+                            <div class="col-lg-4 d-flex align-items-stretch">
+                                <div class="card border-primary mb-3">
+                                    <div class="card-header">{{ $activity->name }}</div>
+                                    <div class="card-body">
+                                        <p class="card-subtitle mb-2 text-muted">{{ $activity->duration }} minutos de duración</p>
+                                        <p class="card-text">{{ $activity->description }}</p>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                        No hay sesiones disponibles
                                     </div>
                                 </div>
                             </div>

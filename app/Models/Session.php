@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,5 +20,15 @@ class Session extends Model
     public function activity()
     {
         return $this->belongsTo(Activity::class);
+    }
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+    public function isAvailable()
+    {
+        return $this->appointments()->count() < $this->activity->max_participants;
     }
 }

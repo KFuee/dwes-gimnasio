@@ -25,4 +25,18 @@ class Activity extends Model
     {
         return $this->hasMany(Session::class);
     }
+
+    public function isAvailable()
+    {
+        if ($this->sessions->count() > 0) {
+            foreach ($this->sessions as $session) {
+                if ($session->isAvailable()) {
+                    return true;
+                    break;
+                }
+            }
+        }
+
+        return false;
+    }
 }
