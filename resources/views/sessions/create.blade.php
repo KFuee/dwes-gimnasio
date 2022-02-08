@@ -16,14 +16,10 @@
 
               <div class="col-md-6">
                 <select id="activity_id" class="form-control{{ $errors->has('activity_id') ? ' is-invalid' : '' }}" name="activity_id" required>
-                  @if ($activities->isEmpty())
-                  <option value="">No hay actividades disponibles</option>
-                  @else
                   <option value="">Seleccione una actividad</option>
                   @foreach ($activities as $activity)
                   <option value="{{ $activity->id }}" {{ old('activity_id') == $activity->id ? 'selected' : '' }}>{{ $activity->name }}</option>
                   @endforeach
-                  @endif
                 </select>
 
                 @error('activity_id')
