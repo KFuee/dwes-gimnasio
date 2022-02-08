@@ -37,4 +37,12 @@ Route::resource('activities', ActivityController::class);
 Route::resource('sessions', SessionController::class);
 
 // Rutas de reservas
-Route::resource('appointments', AppointmentController::class);
+Route::name('appointments.')->prefix('appointments')->group(function () {
+  Route::resource('', AppointmentController::class);
+  Route::get('/activities', [AppointmentController::class, 'activities'])
+    ->name('activities');
+  Route::get('/months/{activity}', [AppointmentController::class, 'months'])
+    ->name('months');
+  Route::get('/sessions/{activity}/{month}', [AppointmentController::class, 'sessions'])
+    ->name('sessions');
+});

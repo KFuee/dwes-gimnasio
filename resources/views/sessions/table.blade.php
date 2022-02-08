@@ -1,4 +1,4 @@
-@if ($sessions->isNotEmpty())
+@if (!empty($sessions))
 <div class="table-responsive">
   <table class="table table-bordered table-hover">
     <thead>
