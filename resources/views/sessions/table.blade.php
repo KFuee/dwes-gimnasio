@@ -1,4 +1,4 @@
-@if (!empty($sessions))
+@if ($sessions->isNotEmpty())
 <div class="table-responsive">
   <table class="table table-bordered table-hover">
     <thead>
@@ -26,6 +26,13 @@
         </td>
         <td>{{ Carbon\Carbon::parse($session->start_time)->format('H:i') }}</td>
         <td>{{ Carbon\Carbon::parse($session->end_time)->format('H:i') }}</td>
+        @if($appointmentView)
+        <td>
+          <a href="{{ route('appointments.create', ['session' => $session->id]) }}" class="btn btn-primary btn-sm">
+            <i class="fas fa-calendar-check me-2"></i>Reservar
+          </a>
+        </td>
+        @else
         <td>
           <a href="{{ route('sessions.show', $session) }}" class="btn btn-primary btn-sm">
             <i class="fas fa-eye"></i>
@@ -38,6 +45,7 @@
             </button>
           </form>
         </td>
+        @endif
       </tr>
       @endforeach
     </tbody>

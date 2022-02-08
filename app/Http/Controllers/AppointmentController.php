@@ -29,9 +29,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        $activities = $this->activities();
-
-        if (count($activities) == 0) {
+        if (Activity::count() == 0) {
             return Redirect::route('home')
                 ->with('error', 'No hay actividades disponibles para reservar');
         }
@@ -42,7 +40,7 @@ class AppointmentController extends Controller
                 ->with('error', 'No hay sesiones disponibles para reservar');
         }
 
-        return view('appointments.create', ['activities' => $activities]);
+        return view('appointments.create', ['activities' => $this->activities()]);
     }
 
     /**
@@ -147,6 +145,10 @@ class AppointmentController extends Controller
             }
         }
 
-        return view('sessions.table', ['sessionsView' => false, 'sessions' => $availableSessions]);
+        return view('sessions.table', [
+            'sessionsView' => false,
+            'appointmentView' => true,
+            'sessions' => collect($availableSessions)
+        ]);
     }
 }

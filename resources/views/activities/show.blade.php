@@ -18,7 +18,7 @@
         <!-- Muestra las sesiones de la actividad en una tabla -->
         <div class="card-header">Sesiones de la actividad</div>
         <div class="card-body">
-          @include('sessions.table', ['sessionsView' => false])
+          @include('sessions.table', ['sessionsView' => false, 'appointmentView' => false])
         </div>
 
         @if ($sessions->isNotEmpty())
