@@ -48,7 +48,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', ['user' => $user, 'showUserView' => true]);
+        $appointments = $user->appointments;
+
+        return view('users.show', ['user' => $user, 'appointments' => $appointments, 'showUserView' => true]);
     }
 
     /**

@@ -6,6 +6,19 @@
     <div class="col-md-10">
       <div class="card border-primary mb-3">
         @include('users.data')
+
+        <!-- Muestra las sesiones de la actividad en una tabla -->
+        <div class="card-header">Reservas del usuario</div>
+
+        <div class="card-body">
+          @include('appointments.table', ['appointments' => $appointments])
+        </div>
+
+        @if ($appointments->isNotEmpty())
+        <div class="card-footer text-muted">
+          Número de registros encontrados: {{ $appointments->count() }}
+        </div>
+        @endif
       </div>
     </div>
   </div>
