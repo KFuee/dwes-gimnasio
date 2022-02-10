@@ -5,7 +5,9 @@
       <tr class="table-primary">
         <th scope="col">#</th>
         <th scope="col">Fecha</th>
+        @if ($showSessionInfo)
         <th scope="col">Sesión</th>
+        @endif
         <th scope="col">Usuario</th>
         <th scope="col">Acciones</th>
       </tr>
@@ -16,7 +18,9 @@
       <tr class="table-secondary">
         <th scope="row">{{ $appointment->id }}</th>
         <td>{{ $appointment->created_at }}</td>
+        @if ($showSessionInfo)
         <td>{{ $appointment->session->date }} {{ Carbon\Carbon::parse($appointment->session->start_time)->format('H:i') }}</td>
+        @endif
         <td>{{ $appointment->user->dni }}</td>
         <td>
           @if (Auth::user()->isAdministrator())

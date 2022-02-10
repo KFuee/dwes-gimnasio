@@ -92,7 +92,11 @@ class AppointmentController extends Controller
         $session = $appointment->session;
         $user = $appointment->user;
 
-        return view('appointments.show', ['appointment' => $appointment, 'session' => $session, 'user' => $user]);
+        return view('appointments.show', [
+            'appointment' => $appointment,
+            'session' => $session,
+            'user' => $user
+        ]);
     }
 
     /**

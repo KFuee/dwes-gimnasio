@@ -50,7 +50,12 @@ class UserController extends Controller
     {
         $appointments = $user->appointments;
 
-        return view('users.show', ['user' => $user, 'appointments' => $appointments, 'showUserView' => true]);
+        return view('users.show', [
+            'user' => $user,
+            'appointments' => $appointments,
+            'showUserView' => true,
+            'showSessionInfo' => true,
+        ]);
     }
 
     /**

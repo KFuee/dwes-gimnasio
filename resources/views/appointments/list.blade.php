@@ -15,7 +15,7 @@
         </div>
 
         <div class="card-body">
-          @include('appointments.table', ['appointments' => $appointments])
+          @include('appointments.table', ['appointments' => $appointments, 'showSessionInfo' => true])
         </div>
 
         @if ($appointments->isNotEmpty())

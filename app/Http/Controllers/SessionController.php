@@ -111,7 +111,14 @@ class SessionController extends Controller
      */
     public function show(Session $session)
     {
-        return view('sessions.show', ['session' => $session, 'showSessionView' => true]);
+        $appointments = $session->appointments;
+
+        return view('sessions.show', [
+            'session' => $session,
+            'appointments' => $appointments,
+            'showSessionView' => true,
+            'showSessionInfo' => false
+        ]);
     }
 
     /**
