@@ -10,6 +10,7 @@
         <th scope="col">{{ __('Fecha') }}</th>
         <th scope="col">{{ __('Hora de inicio') }}</th>
         <th scope="col">{{ __('Hora de fin') }}</th>
+        <th scope="col">{{ __('Usuarios apuntados') }}</th>
         <th scope="col">{{ __('Acciones') }}</th>
       </tr>
     </thead>
@@ -26,6 +27,7 @@
         </td>
         <td>{{ Carbon\Carbon::parse($session->start_time)->format('H:i') }}</td>
         <td>{{ Carbon\Carbon::parse($session->end_time)->format('H:i') }}</td>
+        <td>{{ $session->appointments->count() !== 0 ? $session->appointments->count() : 'Ninguno' }}</td>
         @if($appointmentView)
         <td>
           <form action="{{ route('appointments.store', ['session_id' => $session->id, 'user_id'=> Auth::id()]) }}" method="POST">
