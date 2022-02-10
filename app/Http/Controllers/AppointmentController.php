@@ -7,10 +7,21 @@ use App\Models\Activity;
 use App\Models\Session;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class AppointmentController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +29,17 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::all();
+        $isAdministrator = Auth::user()->role->id === 2;
+
+        // Obtiene el usuario autenticado
+        if ($isAdministrator) {
+            // Obtiene todas las reservas
+            $appointments = Appointment::all();
+        } else {
+            // Obtiene las reservas del usuario autenticado
+            $appointments = Auth::user()->appointments;
+        }
+
         return view('appointments.list', ['appointments' => $appointments]);
     }
 
@@ -46,57 +67,46 @@ class AppointmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        Appointment::create([
+            'session_id' => $request->session_id,
+            'user_id' => $request->user_id,
+        ]);
+
+        return Redirect::route('home')
+            ->with('success', 'Reserva creada correctamente');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Appointment $appointment
+     * @return \Illuminate\Contracts\Support\Renderable vista de mostrar
      */
     public function show(Appointment $appointment)
     {
-        //
-    }
+        $session = $appointment->session;
+        $user = $appointment->user;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Appointment $appointment)
-    {
-        //
+        return view('appointments.show', ['appointment' => $appointment, 'session' => $session, 'user' => $user]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Appointment  $appointment
+     * @param \App\Models\Appointment $appointment
      * @return \Illuminate\Http\Response
      */
     public function destroy(Appointment $appointment)
     {
-        //
+        $appointment->delete();
+
+        return Redirect::route('appointments.index')
+            ->with('success', 'Reserva de ' . strtolower($appointment->session->activity->name) . ' eliminada correctamente');
     }
 
     // Devuelve las actividades disponibles para reservar en JSON

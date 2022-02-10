@@ -18,6 +18,7 @@ class SessionController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin');
     }
 
     /**
@@ -110,7 +111,7 @@ class SessionController extends Controller
      */
     public function show(Session $session)
     {
-        return view('sessions.show', ['session' => $session]);
+        return view('sessions.show', ['session' => $session, 'showSessionView' => true]);
     }
 
     /**

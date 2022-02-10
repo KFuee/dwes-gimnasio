@@ -7,9 +7,11 @@
       <div class="card border-primary mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
           {{ __('Listado de reservas') }}
+          @if (Auth::user()->isAdministrator())
           <a href="{{ route('appointments.create') }}" class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
           </a>
+          @endif
         </div>
 
         <div class="card-body">
@@ -30,16 +32,16 @@
                 @foreach($appointments as $appointment)
                 <tr class="table-secondary">
                   <th scope="row">{{ $appointment->id }}</th>
-                  <td>{{ $appointment->name }}</td>
-                  <td>{{ $appointment->duration }}</td>
-                  <td>{{ $appointment->max_participants }}</td>
+                  <td>{{ $appointment->created_at }}</td>
+                  <td>{{ $appointment->session->date }} {{ Carbon\Carbon::parse($appointment->session->start_time)->format('H:i') }}</td>
+                  <td>{{ $appointment->user->dni }}</td>
                   <td>
+                    @if (Auth::user()->isAdministrator())
                     <a href="{{ route('appointments.show', $appointment->id) }}" class="btn btn-primary btn-sm">
                       <i class="fas fa-eye"></i>
                     </a>
-                    <a href="{{ route('appointments.edit', $appointment->id) }}" class="btn btn-warning btn-sm">
-                      <i class="fas fa-edit"></i>
-                    </a>
+                    @endif
+
                     <form method="POST" action="{{ route('appointments.destroy', $appointment->id) }}" class="d-inline">
                       @csrf
                       @method('DELETE')

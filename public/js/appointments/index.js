@@ -11,9 +11,9 @@ $("#activity_id").change(function () {
 
             $("#month").append('<option value="">Seleccione un mes</option>');
 
-            $.each(data, function (index, month) {
+            $.each(data, function (_index, month) {
                 $("#month").append(
-                    '<option value="' + month + '">' + month + "</option>"
+                    `<option value="${month}">${month}</option>`
                 );
             });
         },
@@ -29,7 +29,7 @@ $("#month").change(function () {
     var activity_id = $("#activity_id").val();
 
     $.ajax({
-        url: "/appointments/sessions/" + activity_id + "/" + month,
+        url: `/appointments/sessions/${activity_id}/${month}`,
         type: "GET",
         dataType: "html",
         success: function (data) {

@@ -16,6 +16,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin')->except('show');
     }
 
     /**
@@ -47,7 +48,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', ['user' => $user]);
+        return view('users.show', ['user' => $user, 'showUserView' => true]);
     }
 
     /**

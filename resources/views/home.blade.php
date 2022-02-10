@@ -11,14 +11,14 @@
                     @if ($activities->isNotEmpty())
                     <!-- Recorre todas las actividades y crea una tarjeta por cada una -->
                     <!-- 3 columnas por fila -->
-                    <div class="container">
+                    <div class="container mb-4">
                         <h3 class="mt-2 mb-4">Actividades disponibles</h3>
 
-                        <div class="row">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
                             @foreach($activities as $activity)
                             @if ($activity->isAvailable())
-                            <div class="col-lg-4 d-flex align-items-stretch">
-                                <div class="card border-primary mb-3">
+                            <div class="col">
+                                <div class="card h-100 border-primary mb-3">
                                     <div class="card-header">{{ $activity->name }}</div>
                                     <div class="card-body">
                                         <p class="card-subtitle mb-2 text-muted">{{ $activity->duration }} minutos de duración</p>
@@ -31,8 +31,8 @@
                                 </div>
                             </div>
                             @else
-                            <div class="col-lg-4 d-flex align-items-stretch">
-                                <div class="card border-primary mb-3">
+                            <div class="col">
+                                <div class="card h-100 border-primary mb-3">
                                     <div class="card-header">{{ $activity->name }}</div>
                                     <div class="card-body">
                                         <p class="card-subtitle mb-2 text-muted">{{ $activity->duration }} minutos de duración</p>
@@ -46,13 +46,13 @@
                             @endif
                             @endforeach
                         </div>
+
+                        @else
+                        No se han encontrado actividades.
+                        @endif
                     </div>
-                    @else
-                    No se han encontrado actividades.
-                    @endif
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

@@ -28,9 +28,12 @@
         <td>{{ Carbon\Carbon::parse($session->end_time)->format('H:i') }}</td>
         @if($appointmentView)
         <td>
-          <a href="{{ route('appointments.create', ['session' => $session->id]) }}" class="btn btn-primary btn-sm">
-            <i class="fas fa-calendar-check me-2"></i>Reservar
-          </a>
+          <form action="{{ route('appointments.store', ['session_id' => $session->id, 'user_id'=> Auth::id()]) }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="fas fa-calendar-check me-2"></i>Reservar
+            </button>
+          </form>
         </td>
         @else
         <td>
