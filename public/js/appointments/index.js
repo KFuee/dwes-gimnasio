@@ -43,3 +43,26 @@ $("#month").change(function () {
     // Deja de ocultar el div de sesiones
     $("#available_sessions").parent().parent().show();
 });
+
+// Controla los cambios en el text input #date-seach
+$("#date-search").on("keyup", function () {
+    var date = $(this).val();
+
+    // Filtra las sesiones disponibles en función de la fecha
+    let counter = 0;
+    $("#available_sessions tr").each(function (index) {
+        if (index === 0) return;
+
+        var session_date = $(this).find("td:nth-child(2)").text();
+
+        if (session_date.includes(date)) {
+            counter++;
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+
+    // Actualiza el contador de sesiones disponibles
+    $("#available_sessions_count").html(counter);
+});

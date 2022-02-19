@@ -52,7 +52,19 @@
 
         <!-- Muestra las sesiones disponibles en una tabla -->
         <div style="display: none;">
-          <div class="card-header">Sesiones disponibles para reservar</div>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-8 col-form-label">
+                {{ __('Sesiones disponibles para reservar') }}
+              </div>
+
+              <div class="col-4">
+                <!-- Input text buscar por fecha -->
+                <input type="text" class="form-control" id="date-search" placeholder="Filtrar por fecha">
+              </div>
+            </div>
+          </div>
+
           <div class="card-body">
             <div id="available_sessions"></div>
           </div>
