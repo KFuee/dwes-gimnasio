@@ -28,7 +28,7 @@ class SessionController extends Controller
      */
     public function index()
     {
-        $sessions = Session::all();
+        $sessions = Session::paginate(5);
         return view('sessions.list', ['sessions' => $sessions]);
     }
 

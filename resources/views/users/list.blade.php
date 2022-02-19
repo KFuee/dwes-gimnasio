@@ -62,6 +62,8 @@
                 @endforeach
               </tbody>
             </table>
+
+            {!! $users->links() !!}
           </div>
           @else
           No se han encontrado usuarios.

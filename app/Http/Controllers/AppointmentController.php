@@ -37,10 +37,10 @@ class AppointmentController extends Controller
         // Obtiene el usuario autenticado
         if ($isAdministrator) {
             // Obtiene todas las reservas
-            $appointments = Appointment::all();
+            $appointments = Appointment::paginate(5);
         } else {
             // Obtiene las reservas del usuario autenticado
-            $appointments = Auth::user()->appointments;
+            $appointments = Appointment::find(Auth::user()->id)::paginate(5);
         }
 
         return view('appointments.list', ['appointments' => $appointments]);

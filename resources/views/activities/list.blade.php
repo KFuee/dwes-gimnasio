@@ -53,6 +53,8 @@
                 @endforeach
               </tbody>
             </table>
+
+            {!! $activities->links() !!}
           </div>
           @else
           No se han encontrado actividades.

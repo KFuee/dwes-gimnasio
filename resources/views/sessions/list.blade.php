@@ -14,6 +14,8 @@
 
         <div class="card-body">
           @include('sessions.table', ['sessionsView' => true, 'appointmentView' => false])
+
+          {!! $sessions->links() !!}
         </div>
 
         @if ($sessions->isNotEmpty())

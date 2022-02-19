@@ -16,6 +16,8 @@
 
         <div class="card-body">
           @include('appointments.table', ['appointments' => $appointments, 'showSessionInfo' => true])
+
+          {!! $appointments->links() !!}
         </div>
 
         @if ($appointments->isNotEmpty())
