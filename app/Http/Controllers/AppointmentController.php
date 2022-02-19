@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AppointmentConfirmation;
 use App\Models\Appointment;
 use App\Models\Activity;
 use App\Models\Session;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 class AppointmentController extends Controller
@@ -76,6 +79,9 @@ class AppointmentController extends Controller
             'session_id' => $request->session_id,
             'user_id' => $request->user_id,
         ]);
+
+        // Envía un correo electrónico al usuario
+        $this->confirmationMail($request);
 
         return Redirect::route('home')
             ->with('success', 'Reserva creada correctamente');
@@ -164,5 +170,29 @@ class AppointmentController extends Controller
             'appointmentView' => true,
             'sessions' => collect($availableSessions)
         ]);
+    }
+
+    public function confirmationMail(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $userName = $user->name;
+        $userMail = $user->email;
+
+        $activityName = Session::find($request->session_id)->activity->name;
+
+        $session = Session::find($request->session_id);
+        $sessionDate = Carbon::parse($session->date);
+        $sessionStartTime = $session->start_time;
+        $sessionEndTime = $session->end_time;
+
+        Mail::to($userMail)->send(
+            new AppointmentConfirmation(
+                $userName,
+                $activityName,
+                $sessionDate,
+                $sessionStartTime,
+                $sessionEndTime
+            )
+        );
     }
 }
