@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -48,12 +49,14 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        Activity::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'duration' => $request->duration,
-            'max_participants' => $request->max_participants,
-        ]);
+        Validator::make($request->all(), [
+            'name' => ['required', 'string', 'unique:activities', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'duration' => ['required', 'integer', 'max:255'],
+            'max_participants' => ['required', 'integer', 'max:255'],
+        ])->validate();
+
+        Activity::create($request->all());
 
         return Redirect::route('activities.index')
             ->with('success', 'Actividad creada correctamente');

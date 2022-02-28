@@ -40,7 +40,7 @@ class AppointmentController extends Controller
             $appointments = Appointment::paginate(5);
         } else {
             // Obtiene las reservas del usuario autenticado
-            $appointments = Appointment::find(Auth::user()->id)::paginate(5);
+            $appointments = Appointment::where('user_id', Auth::user()->id)->paginate(5);
         }
 
         return view('appointments.list', ['appointments' => $appointments]);
